@@ -2,16 +2,13 @@
 
 Small gulp 3 plugin to change file extensions.
 
-
-## Usage
-
-First, install `gulp-ext-replace` as a development dependency:
+## Install
 
 ```shell
 npm install --save-dev gulp-ext-replace
 ```
 
-Then, add it to your `gulpfile.js`:
+## Usage
 
 ```javascript
 var ext-replace = require('gulp-ext-replace');
@@ -22,6 +19,16 @@ gulp.task('change', function() {
       .pipe(gulp.dest('dist'))
 });
 ```
+
+## Testing
+
+Open a terminal in the directory containing `gulp-ext-replace` and then:
+
+```shell
+npm install
+npm test
+```
+
 
 ## The License (MIT)
 Copyright (c) 2014 TJ Eastmond
