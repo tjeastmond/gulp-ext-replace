@@ -2,6 +2,10 @@
 
 Small gulp 3 plugin to change file extensions.
 
+### Update
+
+I removed the `gulpplugin` keyword from the package file so that this plugin doesn't show up on the Gulp website. While I'd prefer to continue using this plugin, the very awesome `gulp-replace` plugin is likely a better choice for you.
+
 ## Install
 
 ```shell
