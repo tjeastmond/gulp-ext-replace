@@ -15,11 +15,11 @@ npm install --save-dev gulp-ext-replace
 ## Usage
 
 ```javascript
-var ext-replace = require('gulp-ext-replace');
+var ext_replace = require('gulp-ext-replace');
 
 gulp.task('change', function() {
   gulp.src('styles/*.css')
-      .pipe(ext-replace('.scss'))
+      .pipe(ext_replace('.scss'))
       .pipe(gulp.dest('dist'))
 });
 ```
