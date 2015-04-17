@@ -2,9 +2,9 @@
 
 Small gulp 3 plugin to change file extensions.
 
-### Update
+### Update - v0.2.0
 
-I removed the `gulpplugin` keyword from the package file so that this plugin doesn't show up on the Gulp website. While I'd prefer to continue using this plugin, the very awesome `gulp-replace` plugin is likely a better choice for you.
+I've added a feature that allows you to tell this plugin what extension you want replaced instead of relying on Node.js to figure it out, which is always just the characters from the last period forward. See below for an example.
 
 ## Install
 
@@ -24,6 +24,17 @@ gulp.task('change', function() {
 });
 ```
 
+If you have a slightly more involved extension you'd like to replace like `.min.css`, you can tell the plugin to replace that instead of the default behavior by passing in a second variable to `ext_replace` in the following example:
+
+```javascript
+gulp.task('change', function() {
+  gulp.src('styles/*.css')
+      .pipe(ext_replace('.scss', '.min.css'))
+      .pipe(gulp.dest('dist'))
+});
+```
+
+
 ## Testing
 
 Open a terminal in the directory containing `gulp-ext-replace` and then:
@@ -33,9 +44,24 @@ npm install
 npm test
 ```
 
+## Change Log
+
+#### 0.2.0
+  - Added ability to specify the extension to be replaced
+  - Updated tests to test for `undefined`, `false` or blank extensions
+  - Added check for period at beginning of new extension
+  - Updated version of dependency `through2`
+
+#### 0.1.0
+  - Bug fix: typo in README
+  - Bumped version number
+
+#### 0.0.5
+  - Initial release
+
 
 ## The License (MIT)
-Copyright (c) 2014 TJ Eastmond
+Copyright (c) 2015 TJ Eastmond
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

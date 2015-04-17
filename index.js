@@ -1,14 +1,16 @@
 'use strict';
 
-var gutil = require('gulp-util');
+// dependencies
 var through = require('through2');
+var path = require('path');
 
-module.exports = function(ext) {
+module.exports = function(ext, replaceExt) {
 	var extension_replace = function(file, encoding, callback) {
-		if (typeof ext === 'undefined') {
-			gutil.log('You failed to supply a new extension so nothing will be changed');
-		} else {
-			file.path = file.path.replace(/\.\w+$/gi, ext);
+		replaceExt = replaceExt || false;
+
+		if (typeof ext === 'string' && ext.length > 0) {
+ 			ext = ext.indexOf('.') === 0 ? ext : '.' + ext;
+			file.path = file.path.replace(replaceExt ? replaceExt : path.extname(file.path), ext);
 		}
 
 		callback(null, file);

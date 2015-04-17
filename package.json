@@ -1,6 +1,6 @@
 {
   "name": "gulp-ext-replace",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/tjeastmond/gulp-ext-replace",
   "description": "Small gulp plugin to change a file's extension",
   "main": "index.js",
@@ -20,15 +20,17 @@
     "extension",
     "file",
     "replace",
-    "gulp"
+    "gulp",
+    "util",
+    "extensions"
   ],
   "license": "MIT",
   "dependencies": {
-    "gulp-util": "~2.2.12",
-    "through2": "~0.4.1"
+    "through2": "~0.6.5"
   },
   "devDependencies": {
-    "gulp": "~3.4.0",
+    "gulp": "~3.8.11",
+    "gulp-util": "~3.0.4",
     "mocha": "~1.15.1",
     "should": "~2.1.1"
   }
