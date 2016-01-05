@@ -34,6 +34,14 @@ gulp.task('change', function() {
 });
 ```
 
+If you would like to remove the extension altogether pass true into the optional 3rd argument like in the following example:
+```javascript
+gulp.task('change', function() {
+  gulp.src('styles/*.css')
+      .pipe(ext_replace('', '', true))
+      .pipe(gulp.dest('dist'))
+});
+```
 
 ## Testing
 
