@@ -2,11 +2,12 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var replace = require('../index');
 var should = require('should');
+var path = require('path');
 
-var fakeFile = function(filename) {
+var fakeFile = function(file) {
 	return new gutil.File({
-		path: "fixtures/" + filename,
-		base: "fixtures",
+		path: (file.path || "fixtures/") + file.name,
+		base: (file.base || "fixtures"),
 		cwd: "test/",
 		contents: new Buffer("body { background:#000; }")
 	});
@@ -14,14 +15,20 @@ var fakeFile = function(filename) {
 
 var testChange = function(options, done) {
 	var stream = replace(options.newExt, options.replaceExt || false);
-	var file = fakeFile(options.filename);
+	var file = fakeFile(options.file || {name: options.filename});
 
 	stream.on('error', done);
 
 	stream.on('data', function(file) {
+    //normalize the paths for windows or unix tests
+    file.path = path.normalize(file.path);
+    options.newPath = options.newPath ? path.normalize(options.newPath): null;
+    options.newRelativePath = options.newRelativePath ?
+                                        path.normalize(options.newRelativePath):
+                                        null;
 		should.exist(file);
-		file.path.should.equal('fixtures/' + options.newFilename);
-		file.relative.should.equal(options.newFilename);
+		file.path.should.equal((options.newPath || 'fixtures' + path.sep) + options.newFilename);
+		file.relative.should.equal(options.newRelativePath || options.newFilename);
 		done();
 	});
 
@@ -109,4 +116,18 @@ describe('gulp-file-extension', function() {
 
 		testChange(options, done);
 	});
+  it('should not rename the directory', function(done){
+    var options = {
+      file: {
+        name: 'animate.css',
+        path: 'animate.css/',
+        base: 'animate'
+      },
+      newRelativePath: '../animate.css/animate.scss',
+      newFilename: 'animate.scss',
+      newPath: 'animate.css/',
+      newExt: 'scss'
+    }
+    testChange(options, done);
+  })
 });

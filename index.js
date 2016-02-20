@@ -10,7 +10,10 @@ module.exports = function(ext, replaceExt) {
 
 		if (typeof ext === 'string' && ext.length > 0) {
  			ext = ext.indexOf('.') === 0 ? ext : '.' + ext;
-			file.path = file.path.replace(replaceExt ? replaceExt : path.extname(file.path), ext);
+			var filePath = path.parse(file.path);
+			filePath.base = filePath.base.replace(replaceExt ? replaceExt : path.extname(file.path), ext);
+			//Format the path back into an absolue
+			file.path = path.format(filePath);
 		}
 
 		callback(null, file);
