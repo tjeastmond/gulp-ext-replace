@@ -8,8 +8,8 @@ module.exports = function(ext, replaceExt) {
 	var extension_replace = function(file, encoding, callback) {
 		replaceExt = replaceExt || false;
 
-		if (typeof ext === 'string' && ext.length > 0) {
- 			ext = ext.indexOf('.') === 0 ? ext : '.' + ext;
+		if (typeof ext === 'string') {
+ 			ext = ext.indexOf('.') === 0 || ext.length === 0 ? ext : '.' + ext;
 			file.path = file.path.replace(replaceExt ? replaceExt : path.extname(file.path), ext);
 		}
 

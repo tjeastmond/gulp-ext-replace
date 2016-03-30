@@ -46,6 +46,11 @@ npm test
 
 ## Change Log
 
+#### 0.3.0
+  - Updated all dependencies
+  - Added support for replacing extensions with nothing per issue: [Replace to no extension](https://github.com/tjeastmond/gulp-ext-replace/issues/6)
+  - Bumped version number
+
 #### 0.2.0
   - Added ability to specify the extension to be replaced
   - Updated tests to test for `undefined`, `false` or blank extensions

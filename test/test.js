@@ -109,4 +109,14 @@ describe('gulp-file-extension', function() {
 
 		testChange(options, done);
 	});
+
+	it('testing...', function(done) {
+		var options = {
+			filename: 't1.js.jst',
+			newFilename: 't1.js',
+			newExt: ''
+		};
+
+		testChange(options, done);
+	});
 });
