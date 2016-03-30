@@ -2,10 +2,6 @@
 
 Small gulp 3 plugin to change file extensions.
 
-### Update - v0.2.0
-
-I've added a feature that allows you to tell this plugin what extension you want replaced instead of relying on Node.js to figure it out, which is always just the characters from the last period forward. See below for an example.
-
 ## Install
 
 ```shell
