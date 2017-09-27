@@ -12,6 +12,9 @@
     "email": "tj.eastmond@gmail.com",
     "url": "http://tjeastmond.com"
   },
+  "contributors": [
+    "Nick Bolles"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/tjeastmond/gulp-ext-replace.git"
